@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <title>To Do Today</title>
+</head>
+<body>
+    <div class="container">
+        <h1>To Do List</h1>
+        <div class="input-container">
+          <input id="task-add" class="input" placeholder="Type in your tasks and press enter...">
+            <i id="submit-button" class="icon fa-solid fa-square-plus"></i>
+          </div>
+        <h2 class="left-over-header">Left Over Tasks</h2>
+        <ul id="left-over-list">
+            <li>To the dishes</li>
+        </ul>
+        <div class="todo-list" id="left-over-tasks"></div>
+        <h2 class="today-header">Tasks for today</h2>
+        <ul id="today-list">
+            <li>Go for a walk</li>
+            <li>Meet someone new</li>
+        </ul>
+        <div class="todo-list" id="tasks-for-today"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,2 +1,2 @@
-# automatic-todo-list
- A basic todo list that allows you to carry tasks over from today into the left over list.
+# todo-today
+ This todo list app allows you to add tasks for the day and carry them over to the next day.
