@@ -67,6 +67,7 @@ input:active {
     text-transform: uppercase;
     font-weight: bold;
     color: var(--color-three);
+    cursor: pointer;
 }
 
 h1 {
@@ -102,7 +103,16 @@ ul li {
     background-color: rgba(255, 255, 255, 0.4);
     padding: 10px 20px;
     border-bottom: 3px solid white;
+    border-left: 3px solid white;
     font-weight: 600;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     width: 350px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.item-icon {
+    color: white;
+    cursor: pointer;
+    margin: 0 10px;
 }
