@@ -38,8 +38,13 @@ function addTask() {
   storeItems();
 }
 
-function moveTaskUp(task) {
-  laterList.push(task);
+function moveTask(task, list) {
+  if (list == "Today") {
+    laterList.push(task);
+    console.log(laterList);
+  } else if (list == "Later") {
+    todos.push(task);
+  }
   populateList("Today");
   populateList("Later");
 }
@@ -48,19 +53,21 @@ function populateList(list) {
   console.log("Here");
   let toInsertList = [];
   let toInsertTodos = [];
+  let listIconClassname = "";
 
   if (list == "Today") {
     toInsertList = todayList;
     toInsertTodos = todos;
+    listIconClassname = "fa-up-long";
   } else if (list == "Later") {
     toInsertList = laterTodos;
     toInsertTodos = laterList;
+    listIconClassname = "fa-down-long";
   } else {
     console.log("Error: Wrong List");
   }
 
   toInsertList.innerHTML = "";
-
   toInsertTodos.forEach((todo, index) => {
     const itemElement = document.createElement("li");
     itemElement.innerText = todo;
@@ -73,10 +80,10 @@ function populateList(list) {
     deleteButton.classList.add("fa-trash");
     deleteButton.classList.add("item-icon");
 
-    const upIcon = document.createElement("i");
-    upIcon.classList.add("fa-solid");
-    upIcon.classList.add("fa-up-long");
-    upIcon.classList.add("item-icon");
+    const moveIcon = document.createElement("i");
+    moveIcon.classList.add("fa-solid");
+    moveIcon.classList.add(listIconClassname);
+    moveIcon.classList.add("item-icon");
 
     deleteButton.addEventListener("click", (event) => {
       removeItem(index, list);
@@ -85,13 +92,13 @@ function populateList(list) {
       populateList("Later");
     });
 
-    upIcon.addEventListener("click", (event) => {
-      removeItem(index, "Today");
-      moveTaskUp(todo);
+    moveIcon.addEventListener("click", (event) => {
+      removeItem(index, list);
+      moveTask(todo, list);
       storeItems();
     });
 
-    iconDiv.appendChild(upIcon);
+    iconDiv.appendChild(moveIcon);
     iconDiv.appendChild(deleteButton);
     toInsertList.appendChild(itemElement);
   });

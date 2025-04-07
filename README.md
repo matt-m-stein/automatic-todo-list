@@ -14,7 +14,7 @@ This todo list app allows you to add tasks for the day and carry them over to th
 
 [X] - Make the ability to delete tasks in the later list
 
-[ ] - Add the ability to move tasks back down to the today list
+[X] - Add the ability to move tasks back down to the today list
 
 [ ] - Implement an automatic moving of the tasks to the later task list
 
