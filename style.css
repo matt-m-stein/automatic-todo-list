@@ -1,118 +1,150 @@
-@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 :root {
-    --color-one: #8c97f4;
-    --color-two: #c96bf1;
-    --color-three: #2ee4e4;
+  --color-one: #8c97f4;
+  --color-two: #c96bf1;
+  --color-three: #2ee4e4;
 }
 
-
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    font-family: "Kanit", sans-serif;
-    background-image: linear-gradient(90deg, rgb(140, 151, 244), rgb(201, 107, 241), rgb(46, 228, 228));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: "Kanit", sans-serif;
+  background-image: linear-gradient(
+    90deg,
+    rgb(140, 151, 244),
+    rgb(201, 107, 241),
+    rgb(46, 228, 228)
+  );
 }
 
 .container {
-    width: 80%;
-    max-width: 600px;
-    background-color: rgba(0, 0, 0, 0.2);
-    padding: 5rem 3rem;
-    margin: 50px 0;
-    border-radius: 10px;
-    border: 5px solid white;
-    box-shadow: 5px 8px 16px rgba(0, 0, 0, 0.4);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: fit-content;
+  width: 80%;
+  max-width: 900px;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 5rem 3rem;
+  margin: 50px 0;
+  border-radius: 10px;
+  border: 5px solid white;
+  box-shadow: 5px 8px 16px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
 }
 
 input {
-    width: 450px;
-    font-family: inherit;
-    font-size: 1.4rem;
-    padding: 5px;
-    border-radius: 10px;
-    border: 2.5px solid var(--color-three);
+  width: 450px;
+  font-family: inherit;
+  font-size: 1.4rem;
+  padding: 5px;
+  border-radius: 10px;
+  border: 2.5px solid var(--color-three);
 }
 
 input:active {
-    outline: none;
+  outline: none;
 }
 
 .input-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .icon {
-    padding: 5px 10px;
-    margin-left: 10px;
-    background-color: black;
-    border: 2.5px solid var(--color-three);
-    border-radius: 10px;
-    font-size: 3rem;
-    text-transform: uppercase;
-    font-weight: bold;
-    color: var(--color-three);
-    cursor: pointer;
+  padding: 5px 10px;
+  margin-left: 10px;
+  background-color: black;
+  border: 2.5px solid var(--color-three);
+  border-radius: 10px;
+  font-size: 3rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: var(--color-three);
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.icon:hover {
+  background-color: black;
+  color: var(--color-two);
+  border-color: var(--color-two);
+  transform: scale(1.1);
 }
 
 h1 {
-    font-weight: bold;
-    font-size: 3rem;
-    color: var(--color-three);
-    background-color: rgba(0, 0, 0, 0.4);
-    border-radius: 20px;
-    border: 5px dashed white;
-    margin: 20px 10px;
-    padding: 10px 20px;
+  font-weight: bold;
+  font-size: 3rem;
+  color: var(--color-three);
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+  border: 5px dashed white;
+  margin: 20px 10px;
+  padding: 10px 20px;
 }
 
 h2 {
-    font-size: 2.2rem;
-    margin: 10px 5px;
-    padding: 7.5px 30px;
-    background-color: black;
-    border-radius: 15px;
-    border: 2.5px solid var(--color-three);
+  font-size: 2.2rem;
+  margin: 10px 5px;
+  padding: 7.5px 30px;
+  background-color: black;
+  border-radius: 15px;
+  border: 2.5px solid var(--color-three);
 }
 
 .left-over-header {
-    color: var(--color-two);
+  color: var(--color-two);
 }
 
 .today-header {
-    color: var(--color-one);
+  color: var(--color-one);
+}
+
+ul {
+  width: 75%;
+  margin: 0.8rem 0;
 }
 
 ul li {
-    list-style-type: none;
-    background-color: rgba(255, 255, 255, 0.4);
-    padding: 10px 20px;
-    border-bottom: 3px solid white;
-    border-left: 3px solid white;
-    font-weight: 600;
-    font-size: 1.5rem;
-    width: 350px;
-    display: flex;
-    justify-content: space-between;
+  list-style-type: none;
+  background-color: rgba(255, 255, 255, 0.4);
+  padding: 0.75rem 1.5rem;
+  border-bottom: 3px solid white;
+  border-left: 3px solid white;
+  font-weight: 600;
+  font-size: 1.4rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .item-icon {
-    color: white;
-    cursor: pointer;
-    margin: 0 10px;
+  color: white;
+  cursor: pointer;
+  margin: 0 10px;
+  transition: all 0.5s;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 2px solid transparent;
+}
+
+.item-icon:hover {
+  color: black;
+  background-color: var(--color-three);
+  border-color: black;
+  transform: scale(1.1);
+}
+
+.delete-button:hover {
+  background-color: var(--color-two);
 }
