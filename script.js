@@ -38,6 +38,8 @@ function startUpScript() {
     }
   });
 
+  input.focus();
+
   // If the submit button is clicked, add the task.
   submitButton.addEventListener("click", (event) => {
     addTask();
@@ -75,7 +77,13 @@ function addTask() {
   populateList("Today");
 
   // Return the input element to its intiial value
-  input.value = "";
+  //input.value = "";
+  const textLength = input.value.length;
+  input.value.split("").forEach((str, index) => {
+    setTimeout(() => {
+      input.value = input.value.slice(1, input.value.length);
+    }, (135 / textLength) * index);
+  });
 
   // Updates local storage
   storeItems();

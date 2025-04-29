@@ -50,10 +50,16 @@ input {
   border-radius: 10px;
   margin: 1.5rem 0;
   border: 2.5px solid var(--color-three);
+  background-color: rgba(0, 0, 0, 0.4);
+  color: var(--color-three);
 }
 
 input:active {
   outline: none;
+}
+
+input::placeholder {
+  color: var(--color-one);
 }
 
 .input-container {
@@ -127,7 +133,7 @@ ul li {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  transition: all 0.9s;
+  transition: all 0.9s ease-out;
 }
 
 .item-icon {
@@ -160,6 +166,22 @@ ul li.delete {
 ul li.change-list {
   background-color: rgba(0, 0, 0, 0.4);
   color: white;
-  transform: scale(1.075);
+}
+
+ul#later-list li {
+  border-color: var(--color-two);
+}
+
+ul#today-list li {
   border-color: var(--color-three);
+}
+
+ul#later-list li.change-list {
+  transform: scale(1.1) translateY(42.5%);
+  border-color: var(--color-three);
+}
+
+ul#today-list li.change-list {
+  transform: scale(1.1) translateY(-42.5%);
+  border-color: var(--color-two);
 }
