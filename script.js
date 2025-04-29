@@ -8,6 +8,8 @@ const laterUlElement = document.getElementById("later-list");
 let todayTaskList = [];
 let laterTaskList = [];
 
+const animationTime = 900;
+
 function startUpScript() {
   // Retrive stored data that is stored on the local computer's webbrowser
   const todaysTasksFromStorage = JSON.parse(
@@ -143,20 +145,25 @@ function populateList(list) {
     // Add an event listener waiting for the user to click to the delete icon
     deleteButton.addEventListener("click", (event) => {
       // Remove the item, update local storage, and update both lists
-      removeItem(index, list);
-      storeItems();
-      populateAllLists();
+      itemElement.classList.add("delete");
+      setTimeout(() => {
+        removeItem(index, list);
+        storeItems();
+        populateAllLists();
+      }, animationTime);
     });
 
     // Listen for the click event from the move icon
     moveIcon.addEventListener("click", (event) => {
       // Move the item to the other listt, remove it from its current list, and update local storage.
-      moveTaskToList(todo, list);
-      removeItem(index, list);
-      storeItems();
-
-      // Then populate all lists
-      populateAllLists();
+      itemElement.classList.add("change-list");
+      setTimeout(() => {
+        moveTaskToList(todo, list);
+        removeItem(index, list);
+        storeItems();
+        // Then populate all lists
+        populateAllLists();
+      }, animationTime);
     });
 
     // Append both icons within the icon list.

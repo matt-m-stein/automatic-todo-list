@@ -20,8 +20,8 @@ This todo list app allows you to add tasks for the day and carry them over to th
 
 [ ] - Choose which time of day for the tasks to automatically move to the later list
 
-[ ] - Make an animation for deleting a task
+[X] - Make an animation for deleting a task
 
-[ ] - Animate the icons way better
+[X] - Animate the icons way better
 
-[ ] - Make an animation for moving the task between lists
+[X] - Make an animation for moving the task between lists

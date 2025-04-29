@@ -30,7 +30,7 @@ body {
   width: 80%;
   max-width: 900px;
   background-color: rgba(0, 0, 0, 0.2);
-  padding: 5rem 3rem;
+  padding: 4rem 3rem;
   margin: 50px 0;
   border-radius: 10px;
   border: 5px solid white;
@@ -48,6 +48,7 @@ input {
   font-size: 1.4rem;
   padding: 5px;
   border-radius: 10px;
+  margin: 1.5rem 0;
   border: 2.5px solid var(--color-three);
 }
 
@@ -72,7 +73,7 @@ input:active {
   font-weight: bold;
   color: var(--color-three);
   cursor: pointer;
-  transition: all 0.5s;
+  transition: all 0.75s;
 }
 
 .icon:hover {
@@ -89,13 +90,13 @@ h1 {
   background-color: rgba(0, 0, 0, 0.4);
   border-radius: 20px;
   border: 5px dashed white;
-  margin: 20px 10px;
+  margin-bottom: 0.5rem;
   padding: 10px 20px;
 }
 
 h2 {
   font-size: 2.2rem;
-  margin: 10px 5px;
+  margin: 0 5px;
   padding: 7.5px 30px;
   background-color: black;
   border-radius: 15px;
@@ -112,7 +113,7 @@ h2 {
 
 ul {
   width: 75%;
-  margin: 0.8rem 0;
+  margin: 1.5rem 0;
 }
 
 ul li {
@@ -126,13 +127,14 @@ ul li {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  transition: all 0.9s;
 }
 
 .item-icon {
   color: white;
   cursor: pointer;
   margin: 0 10px;
-  transition: all 0.5s;
+  transition: all 0.75s;
   padding: 0.5rem;
   border-radius: 0.5rem;
   border: 2px solid transparent;
@@ -147,4 +149,17 @@ ul li {
 
 .delete-button:hover {
   background-color: var(--color-two);
+}
+
+ul li.delete {
+  opacity: 0;
+  transform: scale(0);
+  border-color: var(--color-two);
+}
+
+ul li.change-list {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  transform: scale(1.075);
+  border-color: var(--color-three);
 }
