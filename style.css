@@ -144,6 +144,7 @@ ul li {
   padding: 0.5rem;
   border-radius: 0.5rem;
   border: 2px solid transparent;
+  transition: all 0.9s ease-out;
 }
 
 .item-icon:hover {
@@ -181,7 +182,19 @@ ul#later-list li.change-list {
   border-color: var(--color-three);
 }
 
+li.change-list .item-icon {
+  transform: scale(1.25);
+}
+
+ul#later-list li.change-list .item-icon {
+  color: var(--color-three);
+}
+
 ul#today-list li.change-list {
   transform: scale(1.1) translateY(-42.5%);
   border-color: var(--color-two);
+}
+
+ul#today-list li.change-list .item-icon {
+  color: var(--color-two);
 }
