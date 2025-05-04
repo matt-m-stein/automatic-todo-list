@@ -1,12 +1,20 @@
 // The different elements brought in from the HTML using their specific ID
 const input = document.getElementById("task-add");
 const submitButton = document.getElementById("submit-button");
+
 const todayUlElement = document.getElementById("today-list");
 const laterUlElement = document.getElementById("later-list");
+const doneUlElement = document.getElementById("done-list");
+
+const switchModesButton = document.getElementById("switch-modes-button");
+
+const mainLists = document.getElementById("main-lists");
+const doneLists = document.getElementById("done-lists");
 
 // GLOBAL VARIABLES
 let todayTaskList = [];
 let laterTaskList = [];
+let doneTaskList = [];
 
 const animationTime = 900;
 
@@ -15,9 +23,12 @@ function startUpScript() {
   const todaysTasksFromStorage = JSON.parse(
     localStorage.getItem("todaysTasks")
   );
+
   const latersTasksFromStorage = JSON.parse(
     localStorage.getItem("latersTasks")
   );
+
+  const doneTasksFromStorage = JSON.parse(localStorage.getItem("doneTasks"));
 
   // Checks to see if either list is stored in local storage
   if (isStoredListValid(todaysTasksFromStorage)) {
@@ -26,6 +37,10 @@ function startUpScript() {
 
   if (isStoredListValid(latersTasksFromStorage)) {
     laterTaskList = latersTasksFromStorage;
+  }
+
+  if (isStoredListValid(doneTasksFromStorage)) {
+    doneTaskList = doneTasksFromStorage;
   }
 
   // Populates all the task lists if there is any valid data in local storage
@@ -43,6 +58,11 @@ function startUpScript() {
   // If the submit button is clicked, add the task.
   submitButton.addEventListener("click", (event) => {
     addTask();
+  });
+
+  switchModesButton.addEventListener("click", (event) => {
+    mainLists.classList.toggle("hide");
+    doneLists.classList.toggle("hide");
   });
 }
 
@@ -93,6 +113,7 @@ function addTask() {
 function populateAllLists() {
   populateList("Today");
   populateList("Later");
+  populateList("Done");
 }
 
 // Given a task it moves it to opposite list
@@ -103,6 +124,8 @@ function moveTaskToList(task, list) {
   } else if (list == "Later") {
     // Or do the exact opposite
     todayTaskList.push(task);
+  } else if (list == "Done") {
+    doneTaskList.push(task);
   }
 }
 
@@ -122,6 +145,10 @@ function populateList(list) {
     toInsertList = laterUlElement;
     toInsertTodos = laterTaskList;
     listIconClassname = "fa-down-long";
+  } else if (list == "Done") {
+    toInsertList = doneUlElement;
+    toInsertTodos = doneTaskList;
+    listIconClassname = "";
   } else {
     console.log("Error: Wrong List");
   }
@@ -146,9 +173,16 @@ function populateList(list) {
 
     // Create the move icon with the right classes
     const moveIcon = document.createElement("i");
-    moveIcon.classList.add("fa-solid");
-    moveIcon.classList.add(listIconClassname);
-    moveIcon.classList.add("item-icon");
+    const checkIcon = document.createElement("i");
+    if (list == "Today" || list == "Later") {
+      moveIcon.classList.add("fa-solid");
+      moveIcon.classList.add(listIconClassname);
+      moveIcon.classList.add("item-icon");
+
+      checkIcon.classList.add("fa-solid");
+      checkIcon.classList.add("fa-square-check");
+      checkIcon.classList.add("item-icon");
+    }
 
     // Add an event listener waiting for the user to click to the delete icon
     deleteButton.addEventListener("click", (event) => {
@@ -174,7 +208,15 @@ function populateList(list) {
       }, animationTime);
     });
 
+    checkIcon.addEventListener("click", (event) => {
+      moveTaskToList(todo, "Done");
+      removeItem(index, list);
+      storeItems();
+      populateAllLists();
+    });
+
     // Append both icons within the icon list.
+    iconDiv.appendChild(checkIcon);
     iconDiv.appendChild(moveIcon);
     iconDiv.appendChild(deleteButton);
 
@@ -188,27 +230,39 @@ function removeItem(i, list) {
   // Temporarily holds the data from the passed in list
   let tempTodo = [];
 
-  if (list == "Today") {
-    // Loop through the today task list and unless it is the passed on
-    // i, add it to the temporary storage array.
-    todayTaskList.forEach((item, index) => {
-      if (index != i) {
-        tempTodo.push(item);
-      }
-    });
+  let taskList = [];
 
-    // Updates the today list without the removed element.
+  // Updates the today list without the removed element.
+  // todayTaskList = tempTodo;
+  // Loop through the today task list and unless it is the passed on
+  // i, add it to the temporary storage array.
+
+  if (list == "Today") {
+    taskList = todayTaskList;
+  } else if (list == "Later") {
+    taskList = laterTaskList;
+  } else if (list == "Done") {
+    taskList = doneTaskList;
+  }
+  // laterTaskList.forEach((item, index) => {
+  //   // Exact same functionality as the "Today" list
+  //   if (index != i) {
+  //     tempTodo.push(item);
+  //   }
+  // });
+  taskList.forEach((item, index) => {
+    if (index != i) {
+      tempTodo.push(item);
+    }
+  });
+
+  // Updates the later list without the removed element.
+  if (list == "Today") {
     todayTaskList = tempTodo;
   } else if (list == "Later") {
-    laterTaskList.forEach((item, index) => {
-      // Exact same functionality as the "Today" list
-      if (index != i) {
-        tempTodo.push(item);
-      }
-    });
-
-    // Updates the later list without the removed element.
     laterTaskList = tempTodo;
+  } else if (list == "Done") {
+    doneTaskList = tempTodo;
   }
 }
 
@@ -216,6 +270,7 @@ function removeItem(i, list) {
 function storeItems() {
   localStorage.setItem("todaysTasks", JSON.stringify(todayTaskList));
   localStorage.setItem("latersTasks", JSON.stringify(laterTaskList));
+  localStorage.setItem("doneTasks", JSON.stringify(doneTaskList));
 }
 
 // Run the startup script
