@@ -243,3 +243,66 @@ nav i:active {
 #done-lists.hide {
   display: none;
 }
+
+@media (max-width: 1400px) {
+  nav {
+    margin: 1rem 2rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .container {
+    width: 85%;
+    max-width: 95%;
+    margin-top: 10rem;
+  }
+
+  nav i {
+    font-size: 3rem;
+    padding: 1.5rem;
+  }
+
+  ul {
+    width: 85%;
+  }
+}
+
+@media (max-width: 1000px) {
+  html {
+    font-size: 90%;
+  }
+}
+
+@media (max-width: 800px) {
+  html {
+    font-size: 80%;
+  }
+
+  .container {
+    margin-top: 7.5rem;
+    width: 95%;
+  }
+
+  nav i {
+    font-size: 2rem;
+    padding: 1rem;
+  }
+
+  ul {
+    width: 95%;
+  }
+
+  input {
+    width: 400px;
+  }
+}
+
+@media (max-width: 600px) {
+  html {
+    font-size: 70%;
+  }
+
+  input {
+    width: 300px;
+  }
+}

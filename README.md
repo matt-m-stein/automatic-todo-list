@@ -28,4 +28,4 @@ This todo list app allows you to add tasks for the day and carry them over to th
 
 [X] - Create a done list and the ability to move tasks to it
 
-[ ] - Make the site responsive
+[X] - Make the site responsive
